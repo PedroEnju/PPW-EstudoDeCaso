@@ -1,0 +1,75 @@
+.font-11 {
+    font-size: 11px !important;
+}
+
+.font-12 {
+    font-size: 12px !important;
+}
+
+.font-13 {
+    font-size: 13px !important;
+}
+
+.font-14 {
+    font-size: 14px !important;
+}
+
+.inLoading {
+    display: none;
+}
+
+.input-disabled {
+    background-color: #555 !important;
+    color: #FFF !important;
+    border: 0 !important;
+    border-left: 6px solid #ccc !important;
+    border-color: #333 !important;
+}
+
+.noPaddingLR {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.noPaddingTB {
+    padding-top: : 0px !important;
+    padding-bottom: : 0px !important;
+}
+
+.noMarginLR {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.noMarginTB {
+    margin-top: : 0px !important;
+    margin-bottom: : 0px !important;
+}
+
+body {
+    font-size: .875rem;
+}
+
+[role="main"] {
+    margin: 0 0 0 0;
+}
+
+@media (min-width: 768px) {
+    [role="main"] {
+        margin: 16px 0 0 0;
+    }
+}
+
+.bg-shadow {
+    padding: 8px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px #111;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+    .bg-shadow  {
+        border-radius: 0;
+        box-shadow: 0 0 0 #000;
+        margin-bottom: 0;
+    }
+}
