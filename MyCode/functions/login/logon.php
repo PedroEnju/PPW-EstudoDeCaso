@@ -8,8 +8,8 @@
     $return = array();
     $return["status"] = 1;
 
-    $usuario = isset($_POST["usuario"]) ? $_POST["usuario"] : FALSE;
-    $senha = isset($_POST["senha"]) ? $_POST["senha"] : FALSE;
+    $usuario    = isset($_POST["usuario"]) ? $_POST["usuario"] : FALSE;
+    $senha      = isset($_POST["senha"]) ? $_POST["senha"] : FALSE;
 
     if(empty($usuario)) {
         $return["status"] = 0;

@@ -9,27 +9,69 @@ $(document).ready(function(){
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
-        showConfirmButton: false,
-        timer: 2000
+        showConfirmButton: false
     });
 
-    function toast(msg = "", tipo = "info") {
+    function toast(msg = "", tipo = "info", timer = 2000) {
         Toast.fire({
             type: tipo,
-            title: msg
+            title: msg,
+            timer: timer
         });
     }
 
-    $("#btn_cadastrar").on("click", function(){
-      
-        return;
+    function keyClick(e)
+    {
+        var keycode = (e.keyCode ? e.keyCode : e.which);
+        if(keycode == '13'){
+            if($("#btn_cadastrar").prop("disabled") == false)
+                $("#btn_cadastrar").click();
+        }
+    }
+
+    $("#usuario").on("keypress", function(e){
+        keyClick(e);
     });
 
-    $(document).keypress(function(event){
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if(keycode == '13'){
-            $("#btn_cadastrar").click();
+    $("#senha").on("keypress", function(e){
+        keyClick(e);
+    });
+
+    $("#senhaConf").on("keypress", function(e){
+        keyClick(e);
+    });
+
+    $("#btn_cadastrar").on("click", function(){
+        
+        $(this).attr("disabled", true);
+        
+        var usuario     = $("#usuario").val().trim();
+        var senha       = $("#senha").val().trim();
+        var senhaConf   = $("#senhaConf").val().trim();
+
+        var msg = "";
+        if(typeof usuario == "undefined" || usuario.length == 0) {
+            msg = "Usuário não pode ser em branco!";
+            toast(msg, "error", 4000);
+            $("#usuario").focus();
+        } else if(typeof senha == "undefined" || senha.length == 0) {
+            msg = "Senha não pode ser em branco!";
+            toast(msg, "error", 4000);
+            $("#senha").focus();
+        } else if(typeof senhaConf == "undefined" || senhaConf.length == 0) {
+            msg = "Confirmação de Senha não pode ser em branco!";
+            toast(msg, "error", 4000);
+            $("#senhaConf").focus();
+        } else if(senha !== senhaConf) {
+            msg = "Confirmação de Senha está incorreta!\nPor favor verique!";
+            toast(msg, "error", 4000);
+            $("#senhaConf").focus();
+        } else {
+            console.log("AJAAXXXXXXXXXXXXXX");
         }
+
+        $(this).attr("disabled", false);
+        return;
     });
 
 });
