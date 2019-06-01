@@ -15,18 +15,14 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
             <div class="ml-auto">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown dropleft">
-                        <a class="nav-link dropdown-toggle" href="#" id="ddCadastro" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastro</a>
-                        <div class="dropdown-menu" aria-labelledby="ddCadastro">
+                    <li class="nav-item dropdown">
+                        <div class="btn-dropdown nav-link dropdown-toggle">Cadastro</div>
+                        <div class="dropdown-content">
                             <a class="dropdown-item" href="#">Localidade</a>
                             <a class="dropdown-item" href="../view/usuario-register.php">Usuário</a>
                             <a class="dropdown-item" href="#">Produto</a>
                         </div>
                     </li>
-                </ul>
-            </div>
-            <div class="mr-1">
-                <ul class="navbar-nav">
                     <li class="nav-item ml-auto">
                         <a class="nav-link text-danger" href="../functions/login/logout.php"> Sair </a>
                     </li>
