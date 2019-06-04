@@ -1,6 +1,4 @@
 
-<?php session_start(); ?>
-
 <?php if(!isset($_SESSION["idUsuario"])) header("location: login.php"); ?>
 
 <header>
@@ -15,14 +13,17 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
             <div class="ml-auto">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <div class="btn-dropdown nav-link dropdown-toggle">Cadastro</div>
-                        <div class="dropdown-content">
-                            <a class="dropdown-item" href="#">Localidade</a>
-                            <a class="dropdown-item" href="../view/usuario-register.php">Usuário</a>
-                            <a class="dropdown-item" href="#">Produto</a>
-                        </div>
-                    </li>
+                    <?php if($_SESSION["tipoUsuario"] == "A") : ?>
+                        <li class="nav-item dropdown">
+                            <div class="btn-dropdown nav-link dropdown-toggle">Cadastro</div>
+                            <div class="dropdown-content">
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/estado-register.php">Estado</a>
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/cidade-register.php">Cidade</a>
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/usuario-register.php">Usuário</a>
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/cliente-register.php">Cliente</a>
+                            </div>
+                        </li>
+                    <?php endif; ?>
                     <li class="nav-item ml-auto">
                         <a class="nav-link text-danger" href="../functions/login/logout.php"> Sair </a>
                     </li>

@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-
     include "../../include/functions.php";
     include "../../services/conexao.php";
 
@@ -22,10 +20,11 @@
         $return["error"] = "Senha não pode ser em branco!";
     } else {
 
-        $results = $conn->query("select id_usuario from usuario where nome_usuario = '" . $usuario . "' and senha_usuario = '" . md5($senha) . "'");
+        $results = $conn->query("select id_usuario, tipo_usuario from usuario where nome_usuario = '" . $usuario . "' and senha_usuario = '" . md5($senha) . "'");
 
         if($result = $results->fetch(PDO::FETCH_BOTH)) :
             $_SESSION["idUsuario"] = $result["id_usuario"];
+            $_SESSION["tipoUsuario"] = $result["tipo_usuario"];
         else:
             $return["status"] = 0;
             $return["error"] = "Dados incorretos!";
