@@ -74,4 +74,8 @@ $(document).ready(function(){
         return;
     });
 
+    $("#btn_voltar").on("click", function(){
+        window.history.go(-1);
+    });
+
 });

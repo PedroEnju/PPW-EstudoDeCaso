@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     $("#loading").fadeOut(50, function(){
         $("#image").fadeIn();
-        $("#formEstado").fadeIn();
+        $("#formCidade").fadeIn();
         $(this).remove();
     });
 
@@ -29,11 +29,11 @@ $(document).ready(function(){
         }
     }
 
-    $("#nomeEstado").on("keypress", function(e){
+    $("#nomeCidade").on("keypress", function(e){
         keyClick(e);
     });
 
-    $("#uf").on("keypress", function(e){
+    $("#cep").on("keypress", function(e){
         keyClick(e);
     });
 
@@ -41,30 +41,36 @@ $(document).ready(function(){
         
         $(this).attr("disabled", true);0
         
-        var nomeEstado  = $("#nomeEstado").val().trim();
-        var uf          = $("#uf").val().trim();
-
+        var idEstado 	= $("select[name=idEstado]").val();
+        var nomeCidade  = $("#nomeCidade").val().trim();
+        var cep			= $("#cep").val().trim();
+        
         var msg = "";
-        if(typeof nomeEstado == "undefined" || nomeEstado.length == 0) {
-            msg = "Nome do Estado não pode ser em branco!";
+        if (typeof idEstado == "undefined" || idEstado.length == 0) {
+        	msg = "Estado não pode ser em branco!";
             toast(msg, "error", 4000);
-            $("#nomeEstado").focus();
-        } else if(typeof uf == "undefined" || uf.length == 0) {
-            msg = "UF não pode ser em branco!";
+            $("#idEstado").focus();
+        } else if(typeof nomeCidade == "undefined" || nomeCidade.length == 0) {
+            msg = "Nome da Cidade não pode ser em branco!";
             toast(msg, "error", 4000);
-            $("#uf").focus();
-        } else if(uf.length != 2) {
-            msg = "UF está incorreta!";
+            $("#nomeCidade").focus();
+        } else if(typeof cep == "undefined" || cep.length == 0) {
+            msg = "CEP não pode ser em branco!";
             toast(msg, "error", 4000);
-            $("#uf").focus();
+            $("#cep").focus();
+        } else if(cep.length != 9) {
+            msg = "CEP está incorreto!";
+            toast(msg, "error", 4000);
+            $("#cep").focus();
         } else {
             $.ajax({
                 type: "post",
-                url: BASE_URL + "MyCode/functions/state/cadastrar",
+                url: BASE_URL + "MyCode/functions/city/cadastrar",
                 dataType: "json",
                 data: {
-                    "nomeEstado"    : nomeEstado,
-                    "uf"            : uf
+                	"idEstado"		: idEstado,
+                    "nomeCidade"    : nomeCidade,
+                    "cep"			: cep
                 },
                 beforeSend: function() {
                     toast("Processando...");
@@ -88,7 +94,7 @@ $(document).ready(function(){
     });
 
     $("#btn_voltar").on("click", function(){
-        window.history.go(-1);
+    	window.history.go(-1);
     });
-    
+
 });

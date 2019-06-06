@@ -1,6 +1,7 @@
 
 <?php if(!isset($_SESSION["idUsuario"])) header("location: login.php"); ?>
 
+<link rel="stylesheet" href="../../public/css/menu/menu.css">
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark text-light shadow-md">
         <a class="navbar-brand" href="principal.php">

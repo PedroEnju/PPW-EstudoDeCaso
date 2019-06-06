@@ -5,6 +5,9 @@
         <title> Tela de Cadastro de Estado </title>
     </head>
     <body class="bg-secondary">
+        
+        <?php include_once '../include/menu.php'; ?>
+
         <main class="d-flex justify-content-center mt-3">
             <div class="col-xs-auto col-md-8 col-lg-8 bg-shadow">
                 <div id="image" class="text-center mb-4 inLoading">
@@ -35,17 +38,15 @@
                             <span class="help-block d-flex justify-content-center h6"></span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-auto col-md-12 col-lg-12">
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-xs-auto col-sm-2 col-md-2 col-lg-2 col-xl-2">
                             <div class="form-group">
-                                <button class="btn btn-lg btn-success btn-block" type="button" id="btn_cadastrar">Cadastrar</button>
+                                <button class="btn btn-sm btn-danger btn-block" type="button" id="btn_voltar">Voltar</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-auto col-md-12 col-lg-12">
+                        <div class="col-xs-auto col-sm-3 col-md-3 col-lg-3 col-xl-3">
                             <div class="form-group">
-                                <button class="btn btn-sm btn-danger btn-block" type="button" id="btn_entrar">Voltar</button>
+                                <button class="btn btn-md btn-success btn-block" type="button" id="btn_cadastrar">Cadastrar</button>
                             </div>
                         </div>
                     </div>
