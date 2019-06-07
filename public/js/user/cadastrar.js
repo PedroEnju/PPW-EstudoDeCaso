@@ -63,11 +63,34 @@ $(document).ready(function(){
             toast(msg, "error", 4000);
             $("#senhaConf").focus();
         } else if(senha !== senhaConf) {
-            msg = "Confirmação de Senha está incorreta!\nPor favor verique!";
+            msg = "Confirmação de Senha está incorreta!\nPor favor verifique!";
             toast(msg, "error", 4000);
             $("#senhaConf").focus();
         } else {
-            console.log("AJAAXXXXXXXXXXXXXX");
+            $.ajax({
+                type: "post",
+                url: BASE_URL + "MyCode/functions/user/cadastrar",
+                dataType: "json",
+                data: {
+                    "nomeUsuario"   : usuario,
+                    "senha"         : senha,
+                    "senhaConf"     : senhaConf
+                },
+                beforeSend: function() {
+                    toast("Processando...");
+                },
+                success: function(json) {
+                    if(json["status"] == 1) {
+                        toast("Cadastrado com Sucesso", "success");
+                        window.location.reload();
+                    }
+                    else 
+                        toast("Falha: " + json["error"], "error");
+                },
+                error: function(e) {
+                    console.log(e);
+                }
+            });
         }
 
         $(this).attr("disabled", false);

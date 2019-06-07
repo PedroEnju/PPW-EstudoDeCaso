@@ -5,7 +5,7 @@
         if(!isset($conn) && is_null($conn))
             include_once "../services/conexao.php";
 
-        return $conn->query("select * from cidade where status = 'A' order by nome_cidade asc"); 
+        return $conn->query("select * from cliente where status = 'A' order by nome_cliente asc"); 
     }
 
     function getAllFK($conn = null)
@@ -13,5 +13,5 @@
         if(!isset($conn) && is_null($conn))
             include_once "../services/conexao.php";
 
-        return $conn->query("select * from cidade c inner join estado e on e.id_estado = c.id_estado and c.status = 'A' and e.status = 'A' order by c.nome_cidade asc"); 
+        return $conn->query("select * from cliente c inner join cidade ci on ci.id_cidade = c.id_cidade and c.status = 'A' and ci.status = 'A' order by c.nome_cliente asc"); 
     }

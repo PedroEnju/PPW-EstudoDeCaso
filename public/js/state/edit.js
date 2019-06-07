@@ -37,10 +37,12 @@ $(document).ready(function(){
         keyClick(e);
     });
 
-    $("#btn_cadastrar").on("click", function(){
+    $("#btn_salvar").on("click", function(){
         
         $(this).attr("disabled", true);
         
+
+        var id          = $("#idEstado").val();
         var nomeEstado  = $("#nomeEstado").val().trim();
         var uf          = $("#uf").val().trim();
 
@@ -60,9 +62,10 @@ $(document).ready(function(){
         } else {
             $.ajax({
                 type: "post",
-                url: BASE_URL + "MyCode/functions/state/cadastrar",
+                url: BASE_URL + "MyCode/functions/state/editar",
                 dataType: "json",
                 data: {
+                    "id"            : id,
                     "nomeEstado"    : nomeEstado,
                     "uf"            : uf
                 },
@@ -71,7 +74,7 @@ $(document).ready(function(){
                 },
                 success: function(json) {
                     if(json["status"] == 1) {
-                        toast("Cadastrado com Sucesso", "success");
+                        toast("Editado com Sucesso", "success");
                         window.location.reload();
                     }
                     else

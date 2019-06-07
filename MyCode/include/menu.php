@@ -16,6 +16,15 @@
                 <ul class="navbar-nav">
                     <?php if($_SESSION["tipoUsuario"] == "A") : ?>
                         <li class="nav-item dropdown">
+                            <div class="btn-dropdown nav-link dropdown-toggle">Listar</div>
+                            <div class="dropdown-content">
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/estado-list.php">Estado</a>
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/cidade-list.php">Cidade</a>
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/usuario-list.php">Usuário</a>
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/cliente-list.php">Cliente</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
                             <div class="btn-dropdown nav-link dropdown-toggle">Cadastro</div>
                             <div class="dropdown-content">
                                 <a class="dropdown-item" href="<?= URL ?>MyCode/view/estado-register.php">Estado</a>
