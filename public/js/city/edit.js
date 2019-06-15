@@ -28,7 +28,7 @@ $(document).ready(function(){
                 $("#btn_cadastrar").click();
         }
     }
-
+    
     $("#cep").unmask().mask('00000-000', {reverse: false});
 
     $("#nomeCidade").on("keypress", function(e){
@@ -39,20 +39,17 @@ $(document).ready(function(){
         keyClick(e);
     });
 
-    $("#btn_cadastrar").on("click", function(){
+    $("#btn_salvar").on("click", function(){
         
-        $(this).attr("disabled", true);0
+        $(this).attr("disabled", true);
         
-        var idEstado 	= $("select[name=idEstado]").val();
+
+        var id          = $("#idCidade").val();
         var nomeCidade  = $("#nomeCidade").val().trim();
-        var cep			= $("#cep").val().trim();
-        
+        var cep         = $("#cep").val().trim();
+
         var msg = "";
-        if (typeof idEstado == "undefined" || idEstado.length == 0) {
-        	msg = "Estado não pode ser em branco!";
-            toast(msg, "error", 4000);
-            $("#idEstado").focus();
-        } else if(typeof nomeCidade == "undefined" || nomeCidade.length == 0) {
+        if(typeof nomeCidade == "undefined" || nomeCidade.length == 0) {
             msg = "Nome da Cidade não pode ser em branco!";
             toast(msg, "error", 4000);
             $("#nomeCidade").focus();
@@ -61,25 +58,25 @@ $(document).ready(function(){
             toast(msg, "error", 4000);
             $("#cep").focus();
         } else if(cep.length != 9) {
-            msg = "CEP está incorreto!";
+            msg = "CEP está incorreta!";
             toast(msg, "error", 4000);
             $("#cep").focus();
         } else {
             $.ajax({
                 type: "post",
-                url: BASE_URL + "MyCode/functions/city/cadastrar",
+                url: BASE_URL + "MyCode/functions/city/editar",
                 dataType: "json",
                 data: {
-                	"idEstado"		: idEstado,
+                    "id"            : id,
                     "nomeCidade"    : nomeCidade,
-                    "cep"			: cep
+                    "cep"           : cep
                 },
                 beforeSend: function() {
                     toast("Processando...");
                 },
                 success: function(json) {
                     if(json["status"] == 1) {
-                        toast("Cadastrado com Sucesso", "success");
+                        toast("Editado com Sucesso", "success");
                         window.location.reload();
                     }
                     else
@@ -96,7 +93,7 @@ $(document).ready(function(){
     });
 
     $("#btn_voltar").on("click", function(){
-    	window.history.go(-1);
+        window.history.go(-1);
     });
-
+    
 });

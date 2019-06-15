@@ -5,21 +5,21 @@
     
     $id   = isset($_GET["id"])     ? $_GET["id"]    : NULL;
 
-    include_once "../functions/state/estado.php";
-    $estado = getAll($id);
+    include_once "../functions/city/cidade.php";
+    $cidade = getAll($id);
 
-    $idEstado   = NULL;
-    $nomeEstado = NULL; 
-    $uf         = NULL; 
+    $idCidade   = NULL;
+    $nomeCidade = NULL; 
+    $cep        = NULL; 
 
-    if($result = $estado->fetch(PDO::FETCH_ASSOC)) {
-        $idEstado   = isset($result["id_estado"])   ? $result["id_estado"]      : NULL; 
-        $nomeEstado = isset($result["nome_estado"]) ? $result["nome_estado"]    : NULL; 
-        $uf         = isset($result["uf"])          ? $result["uf"]             : NULL; 
+    if($result = $cidade->fetch(PDO::FETCH_ASSOC)) {
+        $idCidade   = isset($result["id_cidade"])   ? $result["id_cidade"]      : NULL; 
+        $nomeCidade = isset($result["nome_cidade"]) ? $result["nome_cidade"]    : NULL; 
+        $cep        = isset($result["cep"])         ? $result["cep"]            : NULL; 
     }
 
 ?>
-        <title> Tela de Edição de Estado </title>
+        <title> Tela de Edição de Cidade </title>
     </head>
     <body class="bg-secondary">
         
@@ -28,25 +28,25 @@
         <main class="d-flex justify-content-center mt-3">
             <div class="col-xs-auto col-md-8 col-lg-8 bg-shadow">
                 <div id="image" class="text-center mb-4 inLoading">
-                    <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Editar Estado</h1>
+                    <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Editar Cidade</h1>
                 </div>
                 <div id="loading" class="mb-3">
                     <div class="container-fluid text-center">Carregando...</div>
                 </div>
-                <form class="form-signin container inLoading" id="formEstado" name="formEstado" method="post"> 
-                    <input id="idEstado" name="idEstado" type="text" value="<?= $idEstado ?>" hidden>
+                <form class="form-signin container inLoading" id="formCidade" name="formCidade" method="post"> 
+                    <input id="idCidade" name="idCidade" type="text" value="<?= $idCidade ?>" hidden>
                     <div class="row">
                         <div class="col-xs-auto col-sm-8 col-md-8 col-lg-8 col-xl-8">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input class="form-control" id="nomeEstado" name="nomeEstado" type="text" maxlength="100" placeholder="Nome do Estado" autocomplete="off" value="<?= $nomeEstado ?>" autofocus>
+                                    <input class="form-control" id="nomeCidade" name="nomeCidade" type="text" maxlength="100" placeholder="Nome da Cidade" autocomplete="off" value="<?= $nomeCidade ?>" autofocus>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xs-auto col-sm-4 col-md-4 col-lg-4 col-xl-4">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input class="form-control" id="uf" name="uf" type="text" minlength="2" maxlength="2" placeholder="UF" value="<?= $uf ?>" autocomplete="off">
+                                    <input class="form-control" id="cep" name="cep" type="text" minlength="9" maxlength="9" placeholder="CEP" value="<?= $cep ?>" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -75,6 +75,7 @@
         <?php include_once '../include/scripts.php'; ?>
 
         <script type="text/javascript" src="<?= URL ?>public/JS/shared/sweetalert2.all.min.js"></script>
-        <script type="text/javascript" src="<?= URL ?>public/JS/state/edit.js"></script>
+        <script type="text/javascript" src="<?= URL ?>public/JS/shared/jquery.mask.js"></script>
+        <script type="text/javascript" src="<?= URL ?>public/JS/city/edit.js"></script>
     </body> 
 </html>

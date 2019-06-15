@@ -65,6 +65,10 @@ $(document).ready(function(){
     }
     /* end; */
 
+    $(".cidade-editar").on("click", function(){
+        var id      = $(this).parent().parent().attr("idCidade");
+        window.location.href = BASE_URL + "MyCode/view/cidade-edit?id=" + id;
+    });
 
     $(".cidade-excluir").on("click", function(){
 

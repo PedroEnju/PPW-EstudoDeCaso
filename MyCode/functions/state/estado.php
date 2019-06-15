@@ -7,7 +7,7 @@
 
         $byID = "";
         if(isset($id))
-        	$byID = " id_estado = " . $id . ' and ';
+            $byID = " id_estado = " . $id . ' and ';
 
         return $conn->query("select * from estado where " . $byID . "status = 'A' order by nome_estado asc"); 
     }

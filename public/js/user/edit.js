@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     $("#loading").fadeOut(50, function(){
         $("#image").fadeIn();
-        $("#formCidade").fadeIn();
+        $("#formUsuario").fadeIn();
         $(this).remove();
     });
 
@@ -28,58 +28,53 @@ $(document).ready(function(){
                 $("#btn_cadastrar").click();
         }
     }
-
-    $("#cep").unmask().mask('00000-000', {reverse: false});
-
-    $("#nomeCidade").on("keypress", function(e){
+    
+    $("#nomeUsuario").on("keypress", function(e){
         keyClick(e);
     });
 
-    $("#cep").on("keypress", function(e){
+    $("#tipoUsuario").on("keypress", function(e){
         keyClick(e);
     });
 
-    $("#btn_cadastrar").on("click", function(){
+    $("#btn_salvar").on("click", function(){
         
-        $(this).attr("disabled", true);0
+        $(this).attr("disabled", true);
         
-        var idEstado 	= $("select[name=idEstado]").val();
-        var nomeCidade  = $("#nomeCidade").val().trim();
-        var cep			= $("#cep").val().trim();
-        
+
+        var id          = $("#idUsuario").val();
+        var nomeUsuario = $("#nomeUsuario").val().trim();
+        var tipoUsuario = $("#tipoUsuario").val().trim();
+
         var msg = "";
-        if (typeof idEstado == "undefined" || idEstado.length == 0) {
-        	msg = "Estado não pode ser em branco!";
+        if(typeof nomeUsuario == "undefined" || nomeUsuario.length == 0) {
+            msg = "Nome do Usuário não pode ser em branco!";
             toast(msg, "error", 4000);
-            $("#idEstado").focus();
-        } else if(typeof nomeCidade == "undefined" || nomeCidade.length == 0) {
-            msg = "Nome da Cidade não pode ser em branco!";
+            $("#nomeUsuario").focus();
+        } else if(typeof tipoUsuario == "undefined" || tipoUsuario.length == 0) {
+            msg = "Tipo do Usuário não pode ser em branco!";
             toast(msg, "error", 4000);
-            $("#nomeCidade").focus();
-        } else if(typeof cep == "undefined" || cep.length == 0) {
-            msg = "CEP não pode ser em branco!";
+            $("#tipoUsuario").focus();
+        } else if(tipoUsuario != "C" && tipoUsuario != "A") {
+            msg = "Tipo de Usuário está incorreta!";
             toast(msg, "error", 4000);
-            $("#cep").focus();
-        } else if(cep.length != 9) {
-            msg = "CEP está incorreto!";
-            toast(msg, "error", 4000);
-            $("#cep").focus();
+            $("#tipoUsuario").focus();
         } else {
             $.ajax({
                 type: "post",
-                url: BASE_URL + "MyCode/functions/city/cadastrar",
+                url: BASE_URL + "MyCode/functions/user/editar",
                 dataType: "json",
                 data: {
-                	"idEstado"		: idEstado,
-                    "nomeCidade"    : nomeCidade,
-                    "cep"			: cep
+                    "id"            : id,
+                    "nomeUsuario"   : nomeUsuario,
+                    "tipoUsuario"   : tipoUsuario
                 },
                 beforeSend: function() {
                     toast("Processando...");
                 },
                 success: function(json) {
                     if(json["status"] == 1) {
-                        toast("Cadastrado com Sucesso", "success");
+                        toast("Editado com Sucesso", "success");
                         window.location.reload();
                     }
                     else
@@ -96,7 +91,7 @@ $(document).ready(function(){
     });
 
     $("#btn_voltar").on("click", function(){
-    	window.history.go(-1);
+        window.history.go(-1);
     });
-
+    
 });

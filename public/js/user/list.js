@@ -65,6 +65,10 @@ $(document).ready(function(){
     }
     /* end; */
 
+    $(".usuario-editar").on("click", function(){
+        var id      = $(this).parent().parent().attr("idUsuario");
+        window.location.href = BASE_URL + "MyCode/view/usuario-edit?id=" + id;
+    });
 
     $(".usuario-excluir").on("click", function(){
 

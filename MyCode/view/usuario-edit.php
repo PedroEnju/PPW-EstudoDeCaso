@@ -5,21 +5,21 @@
     
     $id   = isset($_GET["id"])     ? $_GET["id"]    : NULL;
 
-    include_once "../functions/state/estado.php";
-    $estado = getAll($id);
+    include_once "../functions/user/usuario.php";
+    $usuario = getAll($id);
 
-    $idEstado   = NULL;
-    $nomeEstado = NULL; 
-    $uf         = NULL; 
+    $idUsuario   = NULL;
+    $nomeUsuario = NULL; 
+    $tipoUsuario = NULL; 
 
-    if($result = $estado->fetch(PDO::FETCH_ASSOC)) {
-        $idEstado   = isset($result["id_estado"])   ? $result["id_estado"]      : NULL; 
-        $nomeEstado = isset($result["nome_estado"]) ? $result["nome_estado"]    : NULL; 
-        $uf         = isset($result["uf"])          ? $result["uf"]             : NULL; 
+    if($result = $usuario->fetch(PDO::FETCH_ASSOC)) {
+        $idUsuario      = isset($result["id_usuario"])      ? $result["id_usuario"]     : NULL; 
+        $nomeUsuario    = isset($result["nome_usuario"])    ? $result["nome_usuario"]   : NULL; 
+        $tipoUsuario    = isset($result["tipo_usuario"])    ? $result["tipo_usuario"]   : NULL; 
     }
 
 ?>
-        <title> Tela de Edição de Estado </title>
+        <title> Tela de Edição de Usuário </title>
     </head>
     <body class="bg-secondary">
         
@@ -28,25 +28,28 @@
         <main class="d-flex justify-content-center mt-3">
             <div class="col-xs-auto col-md-8 col-lg-8 bg-shadow">
                 <div id="image" class="text-center mb-4 inLoading">
-                    <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Editar Estado</h1>
+                    <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Editar Usuário</h1>
                 </div>
                 <div id="loading" class="mb-3">
                     <div class="container-fluid text-center">Carregando...</div>
                 </div>
-                <form class="form-signin container inLoading" id="formEstado" name="formEstado" method="post"> 
-                    <input id="idEstado" name="idEstado" type="text" value="<?= $idEstado ?>" hidden>
+                <form class="form-signin container inLoading" id="formUsuario" name="formUsuario" method="post"> 
+                    <input id="idUsuario" name="idUsuario" type="text" value="<?= $idUsuario ?>" hidden>
                     <div class="row">
                         <div class="col-xs-auto col-sm-8 col-md-8 col-lg-8 col-xl-8">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input class="form-control" id="nomeEstado" name="nomeEstado" type="text" maxlength="100" placeholder="Nome do Estado" autocomplete="off" value="<?= $nomeEstado ?>" autofocus>
+                                    <input class="form-control" id="nomeUsuario" name="nomeUsuario" type="text" maxlength="100" placeholder="Nome do Usuário" autocomplete="off" value="<?= $nomeUsuario ?>" autofocus>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xs-auto col-sm-4 col-md-4 col-lg-4 col-xl-4">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input class="form-control" id="uf" name="uf" type="text" minlength="2" maxlength="2" placeholder="UF" value="<?= $uf ?>" autocomplete="off">
+                                    <select id="tipoUsuario" name="tipoUsuario" class="form-control text-capitalize">
+                                        <option value="A" <?= $tipoUsuario == "A" ? 'selected="selected"' : null ?>>Administrador</option>
+                                        <option value="C" <?= $tipoUsuario == "C" ? 'selected="selected"' : null ?>>Comum</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -75,6 +78,6 @@
         <?php include_once '../include/scripts.php'; ?>
 
         <script type="text/javascript" src="<?= URL ?>public/JS/shared/sweetalert2.all.min.js"></script>
-        <script type="text/javascript" src="<?= URL ?>public/JS/state/edit.js"></script>
+        <script type="text/javascript" src="<?= URL ?>public/JS/user/edit.js"></script>
     </body> 
 </html>

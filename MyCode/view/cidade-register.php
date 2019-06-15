@@ -74,6 +74,7 @@
         <?php include_once '../include/scripts.php'; ?>
 
         <script type="text/javascript" src="<?= URL ?>public/JS/shared/sweetalert2.all.min.js"></script>
+        <script type="text/javascript" src="<?= URL ?>public/JS/shared/jquery.mask.js"></script>
         <script type="text/javascript" src="<?= URL ?>public/JS/city/cadastrar.js"></script>
     </body> 
 </html>
