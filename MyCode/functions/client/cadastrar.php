@@ -17,7 +17,7 @@
     if(empty($idCidade)) {
         $return["status"] = 0;
         $return["error"] = "Cidade não pode ser em branco!";
-    } else if(empty($nomeCidade)) {
+    } else if(empty($nomeCliente)) {
         $return["status"] = 0;
         $return["error"] = "Nome do Cliente não pode ser em branco!";
     } else if(!preg_match(getVerify("cliente"), $nomeCliente)) {

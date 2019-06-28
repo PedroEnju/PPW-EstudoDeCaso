@@ -31,6 +31,7 @@
                                 <a class="dropdown-item" href="<?= URL ?>MyCode/view/cidade-register.php">Cidade</a>
                                 <a class="dropdown-item" href="<?= URL ?>MyCode/view/usuario-register.php">Usuário</a>
                                 <a class="dropdown-item" href="<?= URL ?>MyCode/view/cliente-register.php">Cliente</a>
+                                <a class="dropdown-item" href="<?= URL ?>MyCode/view/funcionario-register.php">Funcionário</a>
                             </div>
                         </li>
                     <?php endif; ?>

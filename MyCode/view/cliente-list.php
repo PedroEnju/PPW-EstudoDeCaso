@@ -1,6 +1,6 @@
 
 <?php include_once "../include/header.php"; ?>
-<?php if(!(isset($_SESSION["tipoUsuario"]) && $_SESSION["tipoUsuario"] == "A")) exit("Não possui permissão!"); ?>
+<?php if(!(isset($_SESSION["tipoUsuario"]) && $_SESSION["tipoUsuario"] == "A")) header("Location:login.php"); ?>
 <?php
 
     $status = array(
@@ -18,7 +18,7 @@
         <?php include_once '../include/menu.php'; ?>
 
         <main class="d-flex justify-content-center mt-3">
-            <div class="col-xs-auto col-md-11 col-lg-11 bg-shadow">
+            <div class="col-12 col-md-11 col-lg-11 bg-shadow">
                 <div id="image" class="text-center mb-4 inLoading">
                     <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Listagem de Cliente</h1>
                 </div>

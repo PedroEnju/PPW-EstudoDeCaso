@@ -5,7 +5,7 @@
     </head>
     <body class="bg-secondary">
         <main class="d-flex justify-content-center mt-3">
-            <div class="col-xs-auto col-md-8 col-lg-8 bg-shadow">
+            <div class="col-12 col-md-8 col-lg-8 bg-shadow">
                 <div id="image" class="text-center mb-4 inLoading">
                     <img class="mb-4" id="logo" src="<?= URL ?>public/img/LOGO.png" alt="logo.png" width="150">
                     <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Cadastrar</h1>
@@ -15,7 +15,7 @@
                 </div>
                 <form class="form-signin container inLoading" id="formLogin" name="formLogin" method="post"> 
                     <div class="row">
-                        <div class="col-xs-auto col-md-12 col-lg-12">
+                        <div class="col-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-auto col-md-6 col-lg-6">
+                        <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-auto col-md-6 col-lg-6">
+                        <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -49,17 +49,17 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-xs-auto col-md-12 col-lg-12">
+                        <div class="col-12 col-md-12 col-lg-12">
                             <span class="help-block d-flex justify-content-center h6"></span>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-end">
-                        <div class="col-xs-auto col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                        <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                             <div class="form-group">
                                 <button class="btn btn-sm btn-danger btn-block" type="button" id="btn_voltar">Voltar</button>
                             </div>
                         </div>
-                        <div class="col-xs-auto col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                             <div class="form-group">
                                 <button class="btn btn-md btn-success btn-block" type="button" id="btn_cadastrar">Cadastrar</button>
                             </div>
