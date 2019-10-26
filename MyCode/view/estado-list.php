@@ -9,7 +9,9 @@
     );
 
     include_once "../functions/state/estado.php";
+ 
     $estados = getAll();
+
 ?>
         <title> Tela de Listagem de Estado </title>
     </head>
@@ -19,8 +21,18 @@
 
         <main class="d-flex justify-content-center mt-3">
             <div class="col-12 col-md-11 col-lg-11 bg-shadow">
-                <div id="image" class="text-center mb-4 inLoading">
-                    <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Listagem de Estado</h1>
+                <div class="row">
+                    <div class="col-8">
+                        <div id="image" class="text-center mb-4 inLoading">
+                            <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Listagem de Estado</h1>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn-exportarXML btn btn-md btn-info btn-block">Exportar XML</button>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn-importarXML btn btn-md btn-success btn-block">Importar XML</button>
+                    </div>
                 </div>
                 <div id="loading" class="mb-3">
                     <div class="container-fluid text-center">Carregando...</div>
@@ -41,7 +53,7 @@
                             <colgroup width="25"></colgroup>
                             <colgroup width="50"></colgroup>
                             <tbody id="table-estado" class="text-light">
-                                <?php if(isset($estados)) : ?>
+                                <?php if(isset($estados) && !empty($estados)) : ?>
                                     <?php foreach ($estados as $estado) : ?>
                                         <tr idEstado="<?= $estado["id_estado"] ?>">
                                             <td class="name"><?= ucwords(strtolower($estado["nome_estado"])) ?></td>

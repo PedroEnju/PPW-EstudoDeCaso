@@ -80,4 +80,36 @@ $(document).ready(function(){
         
     });
 
+    $(".btn-exportarXML").on("click", function() {
+        $.ajax({
+            type: "post",
+            url: BASE_URL + 'MyCode/functions/state/xml.php',
+            data: {
+                "tipo": 'EXPORT'
+            },
+            success: function() {
+                toast("Exportado com sucesso!", "info", 5000);
+            },
+            error: function(e) {
+                console.log(e);
+            }
+        });
+    });
+
+    $(".btn-importarXML").on("click", function() {
+        $.ajax({
+            type: "post",
+            url: BASE_URL + 'MyCode/functions/state/xml.php',
+            data: {
+                "tipo": 'IMPORT'
+            },
+            dataType: "json",
+            success: function(json) {
+                $("#lista").html(json);
+            },
+            error: function(e) {
+                console.log(e);
+            }
+        });
+    });
 });

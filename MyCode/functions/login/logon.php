@@ -1,7 +1,7 @@
 <?php
 
-    include "../../include/functions.php";
-    include "../../services/conexao.php";
+    include_once "../../include/functions.php";
+    include_once BASE_URL . "MyCode/services/conexao.php";
 
     $return = array();
     $return["status"] = 1;

@@ -19,8 +19,18 @@
 
         <main class="d-flex justify-content-center mt-3">
             <div class="col-12 col-md-11 col-lg-11 bg-shadow">
-                <div id="image" class="text-center mb-4 inLoading">
-                    <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Listagem de Cidade</h1>
+                <div class="row">
+                    <div class="col-8">
+                        <div id="image" class="text-center mb-4 inLoading">
+                            <h1 class="h3 pb-1 mb-2 font-weight-normal text-light">Listagem de Cidade</h1>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn-exportarXML btn btn-md btn-info btn-block">Exportar XML</button>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn-importarXML btn btn-md btn-success btn-block">Importar XML</button>
+                    </div>
                 </div>
                 <div id="loading" class="mb-3">
                     <div class="container-fluid text-center">Carregando...</div>
@@ -48,7 +58,7 @@
                                         <tr idCidade="<?= $cidade["id_cidade"] ?>">
                                             <td><?= $cidade["nome_estado"] ?></td>
                                             <td class="name"><?= ucwords(strtolower($cidade["nome_cidade"])) ?></td>
-                                            <td class="uf"><?= $cidade["cep"] ?></td>
+                                            <td class="cep"><?= $cidade["cep"] ?></td>
                                             <td><?= $status[$cidade["status"]] ?></td>
                                             <td>
                                                 <a class="cidade-editar btn btn-primary btn-sm btn-block">Editar</a>

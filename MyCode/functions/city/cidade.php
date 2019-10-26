@@ -3,7 +3,7 @@
     function getAll($id = null, $conn = null)
     {
         if(!isset($conn) && is_null($conn))
-            include_once "../services/conexao.php";
+            include_once __DIR__ . "/../../services/conexao.php";
         
         $byID = "";
         if(isset($id))
@@ -15,7 +15,7 @@
     function getAllFK($conn = null)
     {
         if(!isset($conn) && is_null($conn))
-            include_once "../services/conexao.php";
+            include_once __DIR__ . "/../../services/conexao.php";
 
         $byID = "";
         if(isset($id))
